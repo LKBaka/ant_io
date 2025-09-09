@@ -1,0 +1,12 @@
+[package]
+name = "ant_io"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rust_ant = { git = "https://github.com/LKBaka/RustAnt.git" }
+hashbrown = "0.16.0"
+
+[lib]
+name = "io"
+crate-type = ["dylib"]
