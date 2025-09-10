@@ -1,18 +1,19 @@
-use std::{cell::RefCell, rc::Rc};
+use std::{cell::RefCell, collections::HashMap, rc::Rc};
 
 use rust_ant::{
     obj_enum::object::Object,
     object::{ant_class::AntClass, ant_native_function::create_ant_native_function},
 };
 
-fn test_func(_args: Vec<Rc<RefCell<Object>>>) -> Option<Object> {
-    println!("hey i am an test function. don't call me please. (from module io)");
+#[unsafe(no_mangle)]
+pub fn test_func(_args: Vec<Rc<RefCell<Object>>>) -> Option<Object> {
+    println!("hey i am a test function. don't call me please. (from module io)");
     None
 }
 
 #[unsafe(no_mangle)]
 pub fn get_all_exports() -> AntClass {
-    let mut map = hashbrown::HashMap::new();
+    let mut map = HashMap::new();
 
     map.insert(
         String::from("__donot_call_me_please__"),
