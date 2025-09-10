@@ -5,7 +5,6 @@ use rust_ant::{
     object::{ant_class::AntClass, ant_native_function::create_ant_native_function},
 };
 
-#[unsafe(no_mangle)]
 pub fn test_func(_args: Vec<Rc<RefCell<Object>>>) -> Option<Object> {
     println!("hey i am a test function. don't call me please. (from module io)");
     None
