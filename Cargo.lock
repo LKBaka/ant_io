@@ -444,7 +444,7 @@ checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 [[package]]
 name = "rust_ant"
 version = "0.1.0"
-source = "git+https://github.com/LKBaka/RustAnt.git#3c876f2dbfda1c358ce0a217b1298840b3f8fc85"
+source = "git+https://github.com/LKBaka/RustAnt.git#36f26d914728635d37021b34565a56d6e06e2f7e"
 dependencies = [
  "bigdecimal",
  "byteorder",

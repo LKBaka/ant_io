@@ -10,3 +10,7 @@ libloading = "0.8.8"
 [lib]
 name = "io"
 crate-type = ["dylib"]
+
+[profile]
+dev.lto = true
+release.lto = true
