@@ -1,11 +1,10 @@
 use std::{cell::RefCell, collections::HashMap, rc::Rc};
 
 use rust_ant::{
-    obj_enum::object::Object,
-    object::{ant_class::AntClass, ant_native_function::create_ant_native_function},
+    byte_code_vm::vm::vm::Vm, obj_enum::object::Object, object::{ant_class::AntClass, ant_native_function::create_ant_native_function}
 };
 
-pub fn test_func(_args: Vec<Rc<RefCell<Object>>>) -> Result<Option<Object>, String> {
+pub fn test_func(_vm: &mut Vm, _args: Vec<Rc<RefCell<Object>>>) -> Result<Option<Object>, String> {
     println!("hey i am a test function. don't call me please. (from module io)");
     Ok(None)
 }
