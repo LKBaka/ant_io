@@ -1,8 +1,12 @@
 use std::{cell::RefCell, collections::HashMap, rc::Rc};
 
 use rust_ant::{
-    byte_code_vm::vm::vm::Vm, obj_enum::object::Object, object::{ant_class::AntClass, ant_native_function::create_ant_native_function}
+    byte_code_vm::vm::vm::Vm,
+    obj_enum::object::Object,
+    object::{ant_class::AntClass, ant_native_function::create_ant_native_function},
 };
+
+use crate::io_file::for_ant_create_file_object_from_str;
 
 pub fn test_func(_vm: &mut Vm, _args: Vec<Rc<RefCell<Object>>>) -> Result<Option<Object>, String> {
     println!("hey i am a test function. don't call me please. (from module io)");
@@ -11,12 +15,20 @@ pub fn test_func(_vm: &mut Vm, _args: Vec<Rc<RefCell<Object>>>) -> Result<Option
 
 #[unsafe(no_mangle)]
 pub fn get_all_exports() -> AntClass {
-    let mut map = HashMap::new();
+    let mut io_mod = HashMap::new();
 
-    map.insert(
+    io_mod.insert(
         String::from("__donot_call_me_please__"),
         Object::AntNativeFunction(create_ant_native_function(None, test_func)),
     );
 
-    AntClass::from(map)
+    io_mod.insert(
+        String::from("open"),
+        Object::AntNativeFunction(create_ant_native_function(
+            None,
+            for_ant_create_file_object_from_str,
+        )),
+    );
+
+    AntClass::from(io_mod)
 }
