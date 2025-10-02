@@ -6,7 +6,7 @@ use rust_ant::{
     object::{ant_class::AntClass, ant_native_function::create_ant_native_function},
 };
 
-use crate::io_file::for_ant_create_file_object_from_str;
+use crate::{io_console::CONSOLE_CLASS, io_file::for_ant_create_file_object_from_str};
 
 pub fn test_func(_vm: &mut Vm, _args: Vec<Rc<RefCell<Object>>>) -> Result<Option<Object>, String> {
     println!("hey i am a test function. don't call me please. (from module io)");
@@ -28,6 +28,11 @@ pub fn get_all_exports() -> AntClass {
             None,
             for_ant_create_file_object_from_str,
         )),
+    );
+
+    io_mod.insert(
+        String::from("console"),
+        Object::AntClass(CONSOLE_CLASS.clone())
     );
 
     AntClass::from(io_mod)
