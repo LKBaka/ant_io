@@ -26,7 +26,7 @@ pub static CONSOLE_CLASS: Lazy<AntClass> = Lazy::new(|| {
         let mut input_str = String::new();
         io::stdin().read_line(&mut input_str).map_err(|e| format!("read failed: {}", e))?;
 
-        let result = Object::AntString(AntString::new(input_str.trim_end().to_string()));
+        let result = Object::AntString(AntString::new(input_str.to_string()));
 
         Ok(Some(result))
     };
@@ -58,5 +58,5 @@ pub static CONSOLE_CLASS: Lazy<AntClass> = Lazy::new(|| {
         Object::AntNativeFunction(create_ant_native_function(None, print))
     );
 
-    AntClass::from(console_class_map)
+    AntClass::from(("console", console_class_map))
 });

@@ -74,7 +74,7 @@ pub static IO_ERROR_CLASS: Lazy<AntClass> = Lazy::new(|| {
         })
     );
 
-    AntClass::from(io_err_class)
+    AntClass::from(("IoError", io_err_class))
 });
 
 pub fn create_io_err(

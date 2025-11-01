@@ -35,5 +35,5 @@ pub fn get_all_exports() -> AntClass {
         Object::AntClass(CONSOLE_CLASS.clone())
     );
 
-    AntClass::from(io_mod)
+    AntClass::from(("io", io_mod))
 }

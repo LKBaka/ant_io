@@ -122,7 +122,7 @@ pub static FILE_CLASS: Lazy<AntClass> = Lazy::new(|| {
         }),
     );
 
-    AntClass::from(file_class_map)
+    AntClass::from(("File", file_class_map))
 });
 
 pub fn create_file_object_from_str(path: &str) -> AntClass {
